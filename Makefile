@@ -27,7 +27,7 @@ go-graphql-windows: go-graphql64.exe b2c32.exe
 
 go-graphql: go-graphql-osx go-graphql-linux go-graphql-windows
 
-test: ./helper ./middleware
+test: ./helper
 	go test -race -short \
 		 ./helper \
-		 ./middleware
+

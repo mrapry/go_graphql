@@ -1,19 +1,19 @@
 package helper
 
 import (
-	"strconv"
-	"time"
 	"crypto/md5"
-	"io"
-	"encoding/hex"
 	"crypto/sha1"
-	"strings"
-	"net/http"
-	"fmt"
-	"math/rand"
 	"encoding/base64"
-	"regexp"
+	"encoding/hex"
 	"encoding/json"
+	"fmt"
+	"io"
+	"math/rand"
+	"net/http"
+	"regexp"
+	"strconv"
+	"strings"
+	"time"
 )
 
 const (
