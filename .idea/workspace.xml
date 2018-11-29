@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="091ccb4b-317f-4955-9338-0a78972664e0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/helper.go" beforeDir="false" afterPath="$PROJECT_DIR$/helper/helper.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helper/helper_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/helper/helper_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -44,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helper_test.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="helper_test.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/helper/helper_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-189">
-              <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="20" />
+            <state relative-caret-position="608">
+              <caret line="207" column="1" selection-start-line="192" selection-end-line="207" selection-end-column="1" />
               <folding>
                 <element signature="e#16#97#0" expanded="true" />
               </folding>
@@ -59,7 +55,7 @@
       <file leaf-file-name="helper.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helper/helper.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1839">
+            <state relative-caret-position="1020">
               <caret line="68" column="13" lean-forward="true" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
               <folding>
                 <element signature="e#16#59#0" expanded="true" />
@@ -135,10 +131,10 @@
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/auth/model/auth_model.go" />
-        <option value="$PROJECT_DIR$/helper/helper_test.go" />
         <option value="$PROJECT_DIR$/helper/helper.go" />
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/helper/helper_test.go" />
       </list>
     </option>
   </component>
@@ -362,26 +358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helper/helper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1839">
-          <caret line="68" column="13" lean-forward="true" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
-          <folding>
-            <element signature="e#16#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper/helper_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="20" />
-          <folding>
-            <element signature="e#16#97#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -404,6 +380,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/helper.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="13" lean-forward="true" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+          <folding>
+            <element signature="e#16#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/helper_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="207" column="1" selection-start-line="192" selection-end-line="207" selection-end-column="1" />
+          <folding>
+            <element signature="e#16#97#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

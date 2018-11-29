@@ -174,38 +174,38 @@ type ProductRatingNReview struct {
 }
 
 // TestGetHTTPNewRequestJSON test function
-//func TestGetHTTPNewRequestJSON(t *testing.T) {
-//	url := "http://api.plankton.bhinneka.com/master/variants?include=offers,product&filter[skuNo]=sku00113580"
-//
-//	headers := map[string]string{
-//		"Content-Type": "application/vnd.api+json",
-//		"Accept":       "application/vnd.plankton_api.v3+json",
-//		"x-api-key":    "74bfb4277e931989784fe54f04ea3951a8631a60",
-//	}
-//
-//	obj := PlanktonVariant{}
-//	if e := GetHTTPNewRequest("GET", url, nil, &obj, headers); e != nil {
-//		assert.Error(t, e)
-//	}
-//}
+func TestGetHTTPNewRequestJSON(t *testing.T) {
+	url := "http://api.plankton.bhinneka.com/master/variants?include=offers,product&filter[skuNo]=sku00113580"
+
+	headers := map[string]string{
+		"Content-Type": "application/vnd.api+json",
+		"Accept":       "application/vnd.plankton_api.v3+json",
+		"x-api-key":    "74bfb4277e931989784fe54f04ea3951a8631a60",
+	}
+
+	obj := PlanktonVariant{}
+	if e := GetHTTPNewRequest("GET", url, nil, &obj, headers); e != nil {
+		assert.Error(t, e)
+	}
+}
 
 // TestGetHTTPNewReqBasicAuth test function
-//func TestGetHTTPNewReqBasicAuth(t *testing.T) {
-//	headers := map[string]string{
-//		"Content-Type": "application/vnd.api+json",
-//		"Accept":       "application/vnd.plankton_api.v3+json",
-//		"x-api-key":    "74bfb4277e931989784fe54f04ea3951a8631a60",
-//	}
-//
-//	url := "http://squid.bhinnekalocal.com:9003/api/product-rating/sku00112569"
-//	userName := "bhinneka"
-//	password := "da1c25d8-37c8-41b1-afe2-42dd4825bfea"
-//	obj := ProductRatingNReview{}
-//
-//	if e := GetHTTPNewReqBasicAuth("GET", url, userName, password, nil, &obj, headers); e != nil {
-//		assert.Error(t, e)
-//	}
-//}
+func TestGetHTTPNewReqBasicAuth(t *testing.T) {
+	headers := map[string]string{
+		"Content-Type": "application/vnd.api+json",
+		"Accept":       "application/vnd.plankton_api.v3+json",
+		"x-api-key":    "74bfb4277e931989784fe54f04ea3951a8631a60",
+	}
+
+	url := "http://squid.bhinnekalocal.com:9003/api/product-rating/sku00112569"
+	userName := "bhinneka"
+	password := "da1c25d8-37c8-41b1-afe2-42dd4825bfea"
+	obj := ProductRatingNReview{}
+
+	if e := GetHTTPNewReqBasicAuth("GET", url, userName, password, nil, &obj, headers); e != nil {
+		assert.Error(t, e)
+	}
+}
 
 // TestClearHTML test function
 func TestClearHTML(t *testing.T) {
