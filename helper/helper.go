@@ -55,17 +55,10 @@ func RandomString(length int) string {
 // RandomStringBase64 function for random string and base64 encoded
 func RandomStringBase64(length int) string {
 	rb := make([]byte, length)
-	_, err := rand.Read(rb)
 
-	if err != nil {
-		return err.Error()
-	}
 	rs := base64.URLEncoding.EncodeToString(rb)
 
-	reg, err := regexp.Compile("[^A-Za-z0-9]+")
-	if err != nil {
-		return err.Error()
-	}
+	reg, _ := regexp.Compile("[^A-Za-z0-9]+")
 
 	return reg.ReplaceAllString(rs, "")
 }
