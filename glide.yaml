@@ -1,0 +1,4 @@
+package: github.com/Bhinneka/go-graphql
+import:
+- package: github.com/go-sql-driver/mysql
+  version: v1.4.1
