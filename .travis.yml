@@ -6,8 +6,15 @@ go:
 before_install:
   - go get -t -v ./...
 
+install:
+  - glide install
+  - glide update
+
 script:
-  - go test -race -coverprofile=coverage.txt -covermode=atomic
+  - make test
+
+script:
+  - go test -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 69c14921-3f67-4304-b058-8c7321d80557
