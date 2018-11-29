@@ -6,7 +6,6 @@ import (
 	"math/rand"
 	"regexp"
 	"strconv"
-	"strings"
 	"time"
 )
 
@@ -59,13 +58,13 @@ func RandomStringBase64(length int) string {
 	_, err := rand.Read(rb)
 
 	if err != nil {
-		return ""
+		return err.Error()
 	}
 	rs := base64.URLEncoding.EncodeToString(rb)
 
 	reg, err := regexp.Compile("[^A-Za-z0-9]+")
 	if err != nil {
-		return ""
+		return err.Error()
 	}
 
 	return reg.ReplaceAllString(rs, "")
@@ -87,15 +86,4 @@ func StringInSlice(str string, list []string) bool {
 		}
 	}
 	return false
-}
-
-// SetLastName function for setting last name
-func SetLastName(names []string) string {
-	if len(names) <= 1 {
-		return ""
-	}
-
-	names = append(names[:0], names[1:]...)
-
-	return strings.Join(names, " ")
 }
