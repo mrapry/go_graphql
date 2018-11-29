@@ -4,8 +4,7 @@ go:
   - 1.9.7
 
 before_install:
-  - glide install
-  - glide update
+  - go get -t -v ./...
 
 script:
   - go test -race -coverprofile=coverage.txt -covermode=atomic
