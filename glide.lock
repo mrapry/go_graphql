@@ -1,10 +1,71 @@
-hash: 282c4ed96d37ef297c4512751ce3ac60a8ebda93eef23fad1b3b7868d62facf0
-updated: 2018-11-29T10:37:22.050078+07:00
+hash: 4aabf37d9383eb81040acde891ddbf4d98ba6367f92542fec1f1f2bc64726df3
+updated: 2018-12-02T20:50:00.371923+07:00
 imports:
+- name: github.com/dgrijalva/jwt-go
+  version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
 - name: github.com/go-sql-driver/mysql
   version: 72cd26f257d44c1114970e19afddcd812016007e
+- name: github.com/graphql-go/graphql
+  version: 993e01c146460ccb5530f30a7d9ce19ee6e6c830
+  subpackages:
+  - gqlerrors
+  - language/ast
+  - language/kinds
+  - language/lexer
+  - language/location
+  - language/parser
+  - language/printer
+  - language/source
+  - language/typeInfo
+  - language/visitor
+- name: github.com/konsorten/go-windows-terminal-sequences
+  version: 5c8c8bd35d3832f5d134ae1e1e375b69a4d25242
+- name: github.com/labstack/echo
+  version: 2e9f4ea4e010fa328318107ba074b1b72381c571
+  subpackages:
+  - middleware
+- name: github.com/labstack/gommon
+  version: 7fd9f68ece0bcb1a905fac8f1549f0083f71c51b
+  subpackages:
+  - bytes
+  - color
+  - log
+  - random
+- name: github.com/mattn/go-colorable
+  version: efa589957cd060542a26d2dd7832fd6a6c6c3ade
+- name: github.com/mattn/go-isatty
+  version: 3fb116b820352b7f0c281308a4d6250c22d94e27
+- name: github.com/sirupsen/logrus
+  version: bcd833dfe83d3cebad139e4a29ed79cb2318bf95
+- name: github.com/valyala/bytebufferpool
+  version: cdfbe9377474227bb42120c1e22fd4433e7f69bf
+- name: github.com/valyala/fasttemplate
+  version: dcecefd839c4193db0d35b88ec65b4c12d360ab0
+- name: golang.org/x/crypto
+  version: eb0de9b17e854e9b1ccd9963efafc79862359959
+  subpackages:
+  - acme
+  - acme/autocert
+  - ssh/terminal
+- name: golang.org/x/sys
+  version: 4ed8d59d0b35e1e29334a206d1b3f38b1e5dfb31
+  subpackages:
+  - unix
+  - windows
 - name: google.golang.org/appengine
   version: 4a4468ece617fc8205e99368fa2200e9d1fad421
   subpackages:
   - cloudsql
-testImports: []
+testImports:
+- name: github.com/davecgh/go-spew
+  version: d8f796af33cc11cb798c1aaeb27a4ebc5099927d
+  subpackages:
+  - spew
+- name: github.com/pmezard/go-difflib
+  version: 792786c7400a136282c1664665ae0a8db921c6c2
+  subpackages:
+  - difflib
+- name: github.com/stretchr/testify
+  version: 8019298d9fa5a04fc2ad10ae03349df3483096a6
+  subpackages:
+  - assert
