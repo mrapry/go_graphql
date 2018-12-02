@@ -1,18 +1,12 @@
 package helper
 
 import (
-	"strings"
 	"regexp"
-	"github.com/dgrijalva/jwt-go"
-	"fmt"
 	"errors"
 
-	log "github.com/sirupsen/logrus"
 )
 
 const (
-	// CHARS for setting short random string
-	//CHARS = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 	// this block is for validating URL format
 	email        string = "^(((([a-zA-Z]|\\d|[!#\\$%&'\\*\\+\\-\\/=\\?\\^_`{\\|}~]|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])+(\\.([a-zA-Z]|\\d|[!#\\$%&'\\*\\+\\-\\/=\\?\\^_`{\\|}~]|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])+)*)|((\\x22)((((\\x20|\\x09)*(\\x0d\\x0a))?(\\x20|\\x09)+)?(([\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]|\\x21|[\\x23-\\x5b]|[\\x5d-\\x7e]|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])|(\\([\\x01-\\x09\\x0b\\x0c\\x0d-\\x7f]|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}]))))*(((\\x20|\\x09)*(\\x0d\\x0a))?(\\x20|\\x09)+)?(\\x22)))@((([a-zA-Z]|\\d|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])|(([a-zA-Z]|\\d|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])([a-zA-Z]|\\d|-|\\.|_|~|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])*([a-zA-Z]|\\d|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])))\\.)+(([a-zA-Z]|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])|(([a-zA-Z]|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])([a-zA-Z]|\\d|-|_|~|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])*([a-zA-Z]|[\\x{00A0}-\\x{D7FF}\\x{F900}-\\x{FDCF}\\x{FDF0}-\\x{FFEF}])))\\.?$"
@@ -68,113 +62,6 @@ func ValidateEmail(email string) bool {
 		return false
 	}
 	return true
-}
-
-func CheckHeaderAndAuth(headerAuth string, headerChannel string) error {
-
-	if len(headerAuth) == 0 {
-		err := errors.New("Authorization is required")
-		Log(log.ErrorLevel, err.Error(), "validation-auth-channel", "init_public_key")
-		return err
-	}
-	if len(headerChannel) == 0 {
-		err := errors.New("Channel is required")
-		Log(log.ErrorLevel, err.Error(), "validation-auth-channel", "init_public_key")
-		return err
-	}
-
-	if headerAuth != "" && headerChannel != "" {
-		err := AuthChanelValidation(headerAuth, headerChannel)
-		if err != nil {
-			Log(log.ErrorLevel, err.Error(), "validation-auth-channel", "init_public_key")
-			return err
-		}
-	}
-	return nil
-}
-
-//// ParseToken function for extracting claims
-//func ParseToken(accessToken string) (*middleware.BearerClaims, error) {
-//	ctx := "Server-ParseToken"
-//
-//	var tokenStr string
-//
-//	splitToken := strings.Split(accessToken, " ")
-//	if len(splitToken) < 2 {
-//		tokenStr = strings.TrimSpace(accessToken)
-//	} else {
-//		tokenStr = splitToken[1]
-//	}
-//
-//	// Init Public Key
-//	publicKey, err := keys.InitPublicKey()
-//	if err != nil {
-//		err := errors.New("failed get public key")
-//		Log(log.ErrorLevel, err.Error(), ctx, "init_public_key")
-//		return nil, err
-//	}
-//
-//	token, err := jwt.ParseWithClaims(tokenStr, &middleware.BearerClaims{}, func(token *jwt.Token) (interface{}, error) {
-//		if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
-//			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-//		}
-//		return publicKey, nil
-//	})
-//
-//	if err != nil {
-//		err := errors.New("invalid token format")
-//		Log(log.ErrorLevel, err.Error(), ctx, "token_format")
-//		return nil, err
-//	}
-//
-//	claims, ok := token.Claims.(*middleware.BearerClaims)
-//
-//	if err != nil && !token.Valid && !ok {
-//		err := errors.New("invalid parse token")
-//		Log(log.ErrorLevel, err.Error(), ctx, "token_parse")
-//		return nil, err
-//	}
-//
-//	return claims, nil
-//}
-
-// Channel function for extracting channel header
-func Channel(channel string) (string, error) {
-	ctx := "Helper-Channel"
-
-	channelClean := strings.TrimSpace(channel)
-
-	isAlphaNumeric := regexp.MustCompile("^[A-Za-z0-9]+$").MatchString
-	if !isAlphaNumeric(channelClean) {
-		err := errors.New("invalid header channnel")
-		Log(log.ErrorLevel, err.Error(), ctx, "validate_header")
-		return "", err
-	}
-
-	if channelClean == "CAPP1" {
-		return "ANDROID", nil
-	} else if channelClean == "CAPP2" {
-		return "IOS", nil
-	} else {
-		return "WEB", nil
-	}
-}
-
-func AuthChanelValidation(auth string, channel string) error {
-	ctx := "Authorization validation"
-	_, err := ParseToken(auth)
-	if err != nil {
-		err := errors.New("Authorization is invalid")
-		Log(log.ErrorLevel, err.Error(), ctx, "Authorization_validation")
-		return err
-	}
-	//_, errs := Channel(channel)
-	//if errs != nil {
-	//	errs := errors.New("Channel is invalid")
-	//	Log(log.ErrorLevel, errs.Error(), ctx, "Authorization_validation")
-	//	return errs
-	//}
-	return nil
 }
 
 // ValidateAlphabetWithSpace func for check alphabet with space
