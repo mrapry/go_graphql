@@ -8,8 +8,6 @@ import (
 	"errors"
 
 	log "github.com/sirupsen/logrus"
-	"github.com/mrapry/go-graphql/keys"
-	"github.com/mrapry/go-graphql/middleware"
 )
 
 const (
@@ -95,50 +93,50 @@ func CheckHeaderAndAuth(headerAuth string, headerChannel string) error {
 	return nil
 }
 
-// ParseToken function for extracting claims
-func ParseToken(accessToken string) (*middleware.BearerClaims, error) {
-	ctx := "Server-ParseToken"
-
-	var tokenStr string
-
-	splitToken := strings.Split(accessToken, " ")
-	if len(splitToken) < 2 {
-		tokenStr = strings.TrimSpace(accessToken)
-	} else {
-		tokenStr = splitToken[1]
-	}
-
-	// Init Public Key
-	publicKey, err := keys.InitPublicKey()
-	if err != nil {
-		err := errors.New("failed get public key")
-		Log(log.ErrorLevel, err.Error(), ctx, "init_public_key")
-		return nil, err
-	}
-
-	token, err := jwt.ParseWithClaims(tokenStr, &middleware.BearerClaims{}, func(token *jwt.Token) (interface{}, error) {
-		if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
-			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-		}
-		return publicKey, nil
-	})
-
-	if err != nil {
-		err := errors.New("invalid token format")
-		Log(log.ErrorLevel, err.Error(), ctx, "token_format")
-		return nil, err
-	}
-
-	claims, ok := token.Claims.(*middleware.BearerClaims)
-
-	if err != nil && !token.Valid && !ok {
-		err := errors.New("invalid parse token")
-		Log(log.ErrorLevel, err.Error(), ctx, "token_parse")
-		return nil, err
-	}
-
-	return claims, nil
-}
+//// ParseToken function for extracting claims
+//func ParseToken(accessToken string) (*middleware.BearerClaims, error) {
+//	ctx := "Server-ParseToken"
+//
+//	var tokenStr string
+//
+//	splitToken := strings.Split(accessToken, " ")
+//	if len(splitToken) < 2 {
+//		tokenStr = strings.TrimSpace(accessToken)
+//	} else {
+//		tokenStr = splitToken[1]
+//	}
+//
+//	// Init Public Key
+//	publicKey, err := keys.InitPublicKey()
+//	if err != nil {
+//		err := errors.New("failed get public key")
+//		Log(log.ErrorLevel, err.Error(), ctx, "init_public_key")
+//		return nil, err
+//	}
+//
+//	token, err := jwt.ParseWithClaims(tokenStr, &middleware.BearerClaims{}, func(token *jwt.Token) (interface{}, error) {
+//		if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
+//			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+//		}
+//		return publicKey, nil
+//	})
+//
+//	if err != nil {
+//		err := errors.New("invalid token format")
+//		Log(log.ErrorLevel, err.Error(), ctx, "token_format")
+//		return nil, err
+//	}
+//
+//	claims, ok := token.Claims.(*middleware.BearerClaims)
+//
+//	if err != nil && !token.Valid && !ok {
+//		err := errors.New("invalid parse token")
+//		Log(log.ErrorLevel, err.Error(), ctx, "token_parse")
+//		return nil, err
+//	}
+//
+//	return claims, nil
+//}
 
 // Channel function for extracting channel header
 func Channel(channel string) (string, error) {
