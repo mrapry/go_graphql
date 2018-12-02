@@ -4,7 +4,7 @@ go:
   - 1.9.7
 
 before_install:
-  - go get -t -v ./...
+#  - go get -t -v ./...
   - sudo add-apt-repository ppa:masterminds/glide -y
   - sudo apt-get update -q
   - sudo apt-get install glide -y
