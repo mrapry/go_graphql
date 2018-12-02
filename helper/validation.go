@@ -8,8 +8,8 @@ import (
 	"errors"
 
 	log "github.com/sirupsen/logrus"
-	"github.com/Bhinneka/go-graphql/keys"
-	"github.com/Bhinneka/go-graphql/middleware"
+	"github.com/mrapry/go-graphql/keys"
+	"github.com/mrapry/go-graphql/middleware"
 )
 
 const (
