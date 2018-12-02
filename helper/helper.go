@@ -1,82 +1,71 @@
 package helper
 
 import (
-	"encoding/base64"
+	"encoding/json"
 	"fmt"
-	"math/rand"
-	"regexp"
+	"io"
+	"net/http"
+	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
-const (
-	// CHARS for setting short random string
-	CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-
-	// ErrorDataNotFound error message when data doesn't exist
-	ErrorDataNotFound = "data %s not found"
-	// ErrorParameterInvalid error message for parameter is invalid
-	ErrorParameterInvalid = "%s parameter is invalid"
-	// ErrorParameterRequired error message for parameter is missing
-	ErrorParameterRequired = "%s parameter is required"
-	// SuccessMessage message for success process
-	SuccessMessage = "succeed to process data"
-)
-
-// GenerateRandomID function for generating shipping ID
-func GenerateRandomID(length int, prefix ...string) string {
-	var strPrefix string
-
-	if len(prefix) > 0 {
-		strPrefix = prefix[0]
+func GetHTTPRequestJSON(method string, url string, body io.Reader, target interface{}, headers ...map[string]string) (interface{}, error) {
+	req, err := http.NewRequest(method, url, body)
+	if err != nil {
+		return nil, err
 	}
 
-	yearNow, monthNow, _ := time.Now().Date()
-	year := strconv.Itoa(yearNow)[2:len(strconv.Itoa(yearNow))]
-	month := int(monthNow)
-	RandomString := RandomString(length)
-
-	id := fmt.Sprintf("%s%s%d%s", strPrefix, year, month, RandomString)
-	return id
-}
-
-// RandomString function for random string
-func RandomString(length int) string {
-	rand.Seed(time.Now().UTC().UnixNano())
-
-	charsLength := len(CHARS)
-	result := make([]byte, length)
-	for i := 0; i < length; i++ {
-		result[i] = CHARS[rand.Intn(charsLength)]
-	}
-	return string(result)
-}
-
-// RandomStringBase64 function for random string and base64 encoded
-func RandomStringBase64(length int) string {
-	rb := make([]byte, length)
-
-	rs := base64.URLEncoding.EncodeToString(rb)
-
-	reg, _ := regexp.Compile("[^A-Za-z0-9]+")
-
-	return reg.ReplaceAllString(rs, "")
-}
-
-// ClearHTML function for validating HTML
-func ClearHTML(src string) string {
-	re, _ := regexp.Compile("\\<[\\S\\s]+?\\>")
-	return re.ReplaceAllString(src, "")
-}
-
-// StringInSlice function for checking whether string in slice
-// str string searched string
-// list []string slice
-func StringInSlice(str string, list []string) bool {
-	for _, v := range list {
-		if v == str {
-			return true
+	// iterate optional data of headers
+	for _, header := range headers {
+		for key, value := range header {
+			req.Header.Set(key, value)
 		}
 	}
-	return false
+
+	timeout, _ := strconv.Atoi(os.Getenv("DEFAULT_TIMEOUT"))
+
+	client := &http.Client{Timeout: time.Duration(timeout) * time.Second}
+	r, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer r.Body.Close()
+
+	e := json.NewDecoder(r.Body).Decode(target)
+	if os.Getenv("DEVELOPMENT") == "1" {
+		fmt.Println("code : " + r.Status)
+		fmt.Println("url : " + url)
+		fmt.Println("mtd : " + method)
+		fmt.Printf("%v", headers)
+		fmt.Println("rsp : ")
+		fmt.Printf("%+v\n", target)
+	}
+	if e != nil {
+		return r.Status, e
+	}
+
+	return r.Status, nil
+}
+
+type ErrorStruct struct {
+	Message string `json:"message"`
+}
+
+func ErrorMessage(msg string) ErrorStruct {
+	msgErr := ErrorStruct{}
+	msgErr.Message = msg
+	return msgErr
+}
+
+func GetResponseCode(code string) int {
+	if !ValidateNumeric(code) {
+		responCode := strings.Split(code, " ")[0]
+		i, _ := strconv.Atoi(responCode)
+		return i
+	} else {
+		i, _ := strconv.Atoi(code)
+		return i
+	}
 }
