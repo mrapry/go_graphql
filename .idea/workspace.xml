@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="091ccb4b-317f-4955-9338-0a78972664e0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/helper/logger.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keys/app.rsa" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keys/app.rsa.pub" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/keys/key.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/helper.go" beforeDir="false" afterPath="$PROJECT_DIR$/helper/helper.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/helper_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/helper/helper_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/validation.go" beforeDir="false" afterPath="$PROJECT_DIR$/helper/validation.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="helper.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="helper.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helper/helper.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+            <state relative-caret-position="471">
+              <caret line="70" column="47" lean-forward="true" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
               <folding>
                 <element signature="e#16#87#0" expanded="true" />
               </folding>
@@ -44,8 +37,8 @@
       <file leaf-file-name="helper_test.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helper/helper_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2265">
-              <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+            <state relative-caret-position="96">
+              <caret line="174" column="37" selection-start-line="174" selection-start-column="36" selection-end-line="174" selection-end-column="37" />
               <folding>
                 <element signature="e#16#96#0" expanded="true" />
               </folding>
@@ -53,10 +46,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.rsa.pub" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/keys/app.rsa.pub">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="validation.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/helper/validation.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
+            <state relative-caret-position="-2064">
               <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="e#16#47#0" expanded="true" />
@@ -72,11 +70,6 @@
       </file>
       <file leaf-file-name="key.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/keys/key.go">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="bearer_verify_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/middleware/bearer_verify_test.go">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -113,6 +106,7 @@
       <find>api-gateway</find>
       <find>gateway-api</find>
       <find>GenerateTokenByString</find>
+      <find>StringInSlice</find>
     </findStrings>
     <replaceStrings>
       <replace>go-graphql</replace>
@@ -135,9 +129,9 @@
         <option value="$PROJECT_DIR$/src/auth/model/auth_model.go" />
         <option value="$PROJECT_DIR$/src/auth/service/authService.go" />
         <option value="$PROJECT_DIR$/.travis.yml" />
-        <option value="$PROJECT_DIR$/helper/helper_test.go" />
         <option value="$PROJECT_DIR$/helper/validation.go" />
         <option value="$PROJECT_DIR$/helper/helper.go" />
+        <option value="$PROJECT_DIR$/helper/helper_test.go" />
       </list>
     </option>
   </component>
@@ -271,15 +265,16 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.30462185" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32983193" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32983193" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -288,7 +283,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,32 +489,35 @@
     <entry file="file://$PROJECT_DIR$/helper/logger.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/helper/validation.go">
+    <entry file="file://$PROJECT_DIR$/helper/helper.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="471">
+          <caret line="70" column="47" lean-forward="true" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
           <folding>
-            <element signature="e#16#47#0" expanded="true" />
+            <element signature="e#16#87#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helper/helper_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2265">
-          <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+        <state relative-caret-position="96">
+          <caret line="174" column="37" selection-start-line="174" selection-start-column="36" selection-end-line="174" selection-end-column="37" />
           <folding>
             <element signature="e#16#96#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helper/helper.go">
+    <entry file="file://$PROJECT_DIR$/keys/app.rsa.pub">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper/validation.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+        <state relative-caret-position="-2064">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
           <folding>
-            <element signature="e#16#87#0" expanded="true" />
+            <element signature="e#16#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
