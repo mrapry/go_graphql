@@ -1,13 +1,5 @@
 package helper
 
-import (
-	"regexp"
-	"strings"
-	"testing"
-
-	"github.com/stretchr/testify/assert"
-)
-
 // PlanktonVariant data structure
 type PlanktonVariant struct {
 	Data []struct {
@@ -160,58 +152,4 @@ type Specs struct {
 	OldID int    `json:"oldId"`
 	Name  string `json:"name"`
 	Value string `json:"value"`
-}
-
-// TestClearHTML test function
-func TestClearHTML(t *testing.T) {
-	str := "<strong>Let us make Bhinneka great again</strong>"
-
-	clearStr := ClearHTML(str)
-
-	assert.Equal(t, "Let us make Bhinneka great again", clearStr)
-}
-
-// TestStringInSlice test function
-func TestStringInSlice(t *testing.T) {
-	strSlice := []string{
-		"willy",
-		"bern",
-		"wurry",
-	}
-
-	ok := StringInSlice("willy", strSlice)
-	nok := StringInSlice("linda", strSlice)
-
-	assert.True(t, ok)
-	assert.False(t, nok)
-
-}
-
-// TestRandomString test function
-func TestRandomString(t *testing.T) {
-	length := 8
-	randString := RandomString(length)
-
-	assert.EqualValues(t, length, len(randString))
-}
-
-// TestGenerateRandomID test function
-func TestGenerateRandomID(t *testing.T) {
-	length := 8
-	prefix := "USR"
-
-	randString := GenerateRandomID(length, prefix)
-
-	assert.True(t, strings.Contains(randString, prefix), "random string is false")
-}
-
-func TestRandomStringBase64(t *testing.T) {
-	length := 8
-
-	randString := RandomStringBase64(length)
-
-	reg := regexp.MustCompile("^[A-Za-z0-9]*$")
-	b := reg.Match([]byte(randString))
-
-	assert.True(t, b, "error happens")
 }
